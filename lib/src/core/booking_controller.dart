@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 class BookingController extends ChangeNotifier {
   BookingService bookingService;
-  BookingController({required this.bookingService, this.pauseSlots}) {
+  BookingController({required this.bookingService, this.pauseSlots,this.availableSlots}) {
     serviceOpening = bookingService.bookingStart;
     serviceClosing = bookingService.bookingEnd;
     pauseSlots = pauseSlots;
+    availableSlots = availableSlots;
     if (serviceOpening!.isAfter(serviceClosing!)) {
       throw "Service closing must be after opening";
     }
@@ -25,6 +26,7 @@ class BookingController extends ChangeNotifier {
 
   List<DateTimeRange> bookedSlots = [];
   List<DateTimeRange>? pauseSlots = [];
+  List<DateTimeRange>? availableSlots = [];
 
   int _selectedSlot = (-1);
   bool _isUploading = false;
@@ -127,7 +129,18 @@ class BookingController extends ChangeNotifier {
   }
 
   bool isAvailableSlot(DateTime slot){
-    return true;
+    bool result = true;
+    if (availableSlots == null) {
+      return result;
+    }
+    for (var pauseSlot in availableSlots!) {
+      if (BookingUtil.isOverLapping(pauseSlot.start, pauseSlot.end, slot,
+          slot.add(Duration(minutes: bookingService.serviceDuration)))) {
+        result = false;
+        break;
+      }
+    }
+    return result;
   }
 
 
