@@ -20,6 +20,7 @@ class BookingCalendarMain extends StatefulWidget {
     required this.getBookingStream,
     required this.convertStreamResultToDateTimeRanges,
     required this.uploadBooking,
+    required this.availableSlots,
     this.bookingExplanation,
     this.bookingGridCrossAxisCount,
     this.bookingGridChildAspectRatio,
@@ -68,6 +69,7 @@ class BookingCalendarMain extends StatefulWidget {
   final Color? selectedSlotColor;
   final Color? availableSlotColor;
   final Color? pauseSlotColor;
+  final List<DateTimeRange>? availableSlots;
 
 //Added optional TextStyle to available, booked and selected cards.
   final String? bookedSlotText;

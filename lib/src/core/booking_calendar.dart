@@ -26,6 +26,7 @@ class BookingCalendar extends StatelessWidget {
       this.selectedSlotText,
       this.availableSlotText,
       this.availableSlotTextStyle,
+      this.availableSlots,
       this.selectedSlotTextStyle,
       this.bookedSlotTextStyle,
       this.gridScrollPhysics,
@@ -127,6 +128,9 @@ class BookingCalendar extends StatelessWidget {
   ///The pause time, where the slots won't be available
   final List<DateTimeRange>? pauseSlots;
 
+  ///The pause time, where the slots will be available
+  final List<DateTimeRange>? availableSlots;
+
   ///True if you want to hide your break time from the calendar, and the explanation text as well
   final bool? hideBreakTime;
 
@@ -165,6 +169,7 @@ class BookingCalendar extends StatelessWidget {
             convertStreamResultToDateTimeRanges,
         bookedSlotTextStyle: bookedSlotTextStyle,
         availableSlotTextStyle: availableSlotTextStyle,
+        availableSlots: availableSlots,
         selectedSlotTextStyle: selectedSlotTextStyle,
         availableSlotColor: availableSlotColor,
         availableSlotText: availableSlotText,
