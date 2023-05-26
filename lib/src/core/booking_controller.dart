@@ -51,10 +51,12 @@ class BookingController extends ChangeNotifier {
 
   void _generateBookingSlots() {
     allBookingSlots.clear();
-    _allBookingSlots = List.generate(
-        _maxServiceFitInADay(),
-        (index) => base
-            .add(Duration(minutes: bookingService.serviceDuration) * index));
+    if(availableSlots==allBookingSlots){
+      _allBookingSlots = List.generate(
+          _maxServiceFitInADay(),
+              (index) => base
+              .add(Duration(minutes: bookingService.serviceDuration) * index));
+    }
   }
 
   bool isWholeDayBooked() {
