@@ -9,6 +9,7 @@ class BookingSlot extends StatelessWidget {
     required this.onTap,
     required this.isSelected,
     required this.isPauseTime,
+    required this.isAvailableSlot,
     this.bookedSlotColor,
     this.selectedSlotColor,
     this.availableSlotColor,
@@ -19,6 +20,7 @@ class BookingSlot extends StatelessWidget {
   final Widget child;
   final bool isBooked;
   final bool isPauseTime;
+  final bool isAvailableSlot;
   final bool isSelected;
   final VoidCallback onTap;
   final Color? bookedSlotColor;
@@ -31,7 +33,9 @@ class BookingSlot extends StatelessWidget {
     if (isPauseTime) {
       return pauseSlotColor ?? Colors.grey;
     }
-
+    if (isAvailableSlot) {
+      return pauseSlotColor ?? Colors.white;
+    }
     if (isBooked) {
       return bookedSlotColor ?? Colors.redAccent;
     } else {

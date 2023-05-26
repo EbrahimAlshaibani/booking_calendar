@@ -126,6 +126,11 @@ class BookingController extends ChangeNotifier {
     return bookingService;
   }
 
+  bool isAvailableSlot(DateTime slot){
+    return true;
+  }
+
+
   bool isSlotInPauseTime(DateTime slot) {
     bool result = false;
     if (pauseSlots == null) {

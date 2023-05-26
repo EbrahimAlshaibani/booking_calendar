@@ -311,6 +311,8 @@ class _BookingCalendarMainState extends State<BookingCalendarMain> {
                                     selectedSlotColor: widget.selectedSlotColor,
                                     isPauseTime:
                                         controller.isSlotInPauseTime(slot),
+                                    isAvailableSlot:
+                                    controller.isAvailableSlot(slot),
                                     isBooked: controller.isSlotBooked(index),
                                     isSelected:
                                         index == controller.selectedSlot,
